@@ -4,6 +4,7 @@
     <div class="tile-body">
         <isif condition="${pdict.display.swatches !== false}">
             <isinclude template="product/components/productTileSwatch" />
+<<<<<<< Updated upstream
         </isif>
 
         <isinclude template="product/components/productTileName" />
@@ -20,6 +21,30 @@
         </isif>
         <div class="product-test-class">custom css class example</div>
     </div>
+=======
+          </isif>
+      
+          <isinclude template="product/components/productTileName" />
+      
+          <isset name="price" value="${product.price}" scope="page" />
+          <isif condition="${product.productType === 'set'}">
+            <isinclude template="product/components/pricing/setPrice" />
+          <iselse>
+            <isinclude template="product/components/pricing/main" />
+          </isif>
+      
+          <isif condition="${pdict.display.ratings !== false}">
+            <isinclude template="product/productTileFooter" />
+          </isif>
+          <isif condition="${!empty(pdict.discountPercentage)}">
+            <div class="discount-percentage">
+                ${Resource.msgf('BEST DEALS 24% OFF', 'app_training', null, pdict.discountPercentage)}
+            </div>
+        </isif>
+        </div>
+        <div class="product-test-class">${''}</div>
+        </div>
+>>>>>>> Stashed changes
     <!-- END_dwmarker -->
 </div>
 
