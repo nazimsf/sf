@@ -1,4 +1,6 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
 <isinclude template="search/components/productTiles" />
+<iscontentasset aid="student_guide_content_asset"/>
 
 <div class="col-12 grid-footer"
      data-sort-options="${JSON.stringify(pdict.productSearch.productSort)}"
