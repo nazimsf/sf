@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+  <content content-id="cartTotalExceedsMessage">
+    <display-name xml:lang="x-default">Cart Total Exceeds Message</display-name>
+    <online-flag>true</online-flag>
+    <searchable-flag>false</searchable-flag>
+    <custom-attributes>
+      <custom-attribute attribute-id="body" xml:lang="x-default">&lt;div class=&quot;cart-total-message&quot;&gt;&#13;    Your cart total exceeds $[[cartTotalThreshold]]!&#13;&lt;/div&gt;</custom-attribute>
+    </custom-attributes>
+    <folder-links>
+    </folder-links>
+  </content>
+</library>
