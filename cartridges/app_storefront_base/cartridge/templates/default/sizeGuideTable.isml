@@ -1,0 +1,6 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
+
+<div class="size-guide">
+    <h2>Size Guide</h2>
+    <iscontentasset aid="size-guide-table"/>
+</div>
