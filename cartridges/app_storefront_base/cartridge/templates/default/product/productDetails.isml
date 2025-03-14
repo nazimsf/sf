@@ -46,7 +46,6 @@
                         </div>
                     </div>
 
-
                     <div class="row">
                         <div class="col">
                             <isinclude template="product/components/pidRating" />
@@ -141,6 +140,23 @@
 
             <div class="recommendations">
                 <isslot id="product-recommendations-m" description="Recommended products" context="global" context-object="${pdict.product.raw}" />
+            </div>
+
+                <isinclude template="sizeGuideTable" />
+
+            <!-- Suggested Products Section -->
+            <div class="suggested-products">
+                <h2>Suggested Products</h2>
+                <div class="product-list">
+                    <isloop items="${pdict.suggestedProducts}" var="suggestedProduct">
+                        <div class="product-item">
+                            <img src="${suggestedProduct.imageURL}" alt="${suggestedProduct.name}" />
+                            <p>${suggestedProduct.name}</p>
+                            <p>${suggestedProduct.price}</p>
+                            <a href="${URLUtils.url('Product-Show', 'pid', suggestedProduct.id)}">View Product</a>
+                        </div>
+                    </isloop>
+                </div>
             </div>
         </div>
     </isobject>

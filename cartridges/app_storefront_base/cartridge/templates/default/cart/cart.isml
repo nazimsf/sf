@@ -21,6 +21,11 @@
 
     <div class="container">
         <h1 class="page-title">${Resource.msg('title.cart','cart',null)}</h1>
+        <isif condition="${pdict.showCartMessage}">
+            <div class="cart-message">
+                ${pdict.cartMessage}
+            </div>
+        </isif>
         <div class="row cart-header">
             <div class="col-sm-4 hidden-xs-down">
                 <a class="continue-shopping-link" href="${URLUtils.url('Home-Show')}" title="${Resource.msg('link.continue.shopping','cart',null)}">

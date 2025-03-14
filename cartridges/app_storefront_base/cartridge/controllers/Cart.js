@@ -107,6 +107,31 @@ server.post('AddProduct', function (req, res, next) {
                 cartHelper.ensureAllShipmentsHaveMethods(currentBasket);
                 basketCalculationHelpers.calculateTotals(currentBasket);
             }
+            if (currentBasket) {
+                Transaction.wrap(function () {
+                    if (currentBasket.currencyCode !== req.session.currency.currencyCode) {
+                        currentBasket.updateCurrency();
+                    }
+                    cartHelper.ensureAllShipmentsHaveMethods(currentBasket);
+                    basketCalculationHelpers.calculateTotals(currentBasket);
+            
+                    // Add the logic to check if the cart total exceeds the threshold
+                    var cartTotalThreshold = 200; // This should be replaced with the site preference value
+                    var cartTotal = currentBasket.totalGrossPrice.value;
+                    var showCartMessage = false;
+                    var cartMessage = '';
+            
+                    if (cartTotal > cartTotalThreshold) {
+                        showCartMessage = true;
+                        cartMessage = "Congratulations! You have exceeded $200 in your cart.";
+                    }
+            
+                    res.setViewData({
+                        showCartMessage: showCartMessage,
+                        cartMessage: cartMessage
+                    });
+                });
+            }
         });
     }
 

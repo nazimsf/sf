@@ -20,11 +20,11 @@
           </isif>
           <isif condition="${!empty(pdict.discountPercentage)}">
             <div class="discount-percentage">
-                ${Resource.msgf('best.deal.label', 'app_training', null, pdict.discountPercentage)}
+                ${Resource.msgf('BEST DEALS 24% OFF', 'app_training', null, pdict.discountPercentage)}
             </div>
         </isif>
         </div>
-        <div class="product-test-class">${'Test ' + pdict.discountPercentage + '% OFF'}</div>
+        <div class="product-test-class">${''}</div>
         </div>
     <!-- END_dwmarker -->
 </div>

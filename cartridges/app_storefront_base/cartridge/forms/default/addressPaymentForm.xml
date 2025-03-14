@@ -1,0 +1,11 @@
+<form>
+    <field formid="street" type="string" mandatory="true" label="form.label.street" />
+    <field formid="city" type="string" mandatory="true" label="form.label.city" />
+    <field formid="state" type="string" mandatory="true" label="form.label.state" />
+    <field formid="zip" type="string" mandatory="true" label="form.label.zip" regexp="^\d{5}(-\d{4})?$" parse-error="form.error.zip" />
+    <field formid="cardNumber" type="string" mandatory="true" label="form.label.cardNumber" />
+    <field formid="expiryDate" type="string" mandatory="true" label="form.label.expiryDate" />
+    <field formid="cvv" type="string" mandatory="true" label="form.label.cvv" />
+    <field formid="comments" type="string" max-length="150" label="form.label.comments" />
+    <action formid="submit" valid-form="true" />
+</form>
