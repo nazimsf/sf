@@ -1,0 +1,12 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
+<isscript>
+  var URLUtils = require('dw/web/URLUtils');
+  var cssFile = URLUtils.staticURL('css/bannerStyles.css');
+</isscript>
+
+<link rel="stylesheet" type="text/css" href="${cssFile}" />
+
+<div class="homepage-banner" style="text-align: center;">
+  <!-- Load the test content asset -->
+  <iscontentasset aid="banner"/>
+</div>

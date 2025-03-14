@@ -8,10 +8,8 @@ var server = require('server');
 var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
+var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
 
-/**
- * Any customization on this endpoint, also requires update for Default-Start endpoint
- */
 /**
  * Home-Show : This endpoint is called when a shopper navigates to the home page
  * @name Base/Home-Show
@@ -24,18 +22,29 @@ var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
  * @param {serverfunction} - get
  */
 server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (req, res, next) {
+    var ContentMgr = require('dw/content/ContentMgr');
     var Site = require('dw/system/Site');
     var PageMgr = require('dw/experience/PageMgr');
-    var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
+
+    var pageData = {};
 
     pageMetaHelper.setPageMetaTags(req.pageMetaData, Site.current);
 
     var page = PageMgr.getPage('homepage');
 
+    // Retrieve the content asset
+    var contentAsset = ContentMgr.getContent('homepage-banner');
+    if (contentAsset && contentAsset.custom && contentAsset.custom.imageUrl) {
+        pageData.bannerImageUrl = contentAsset.custom.imageUrl;
+    } else {
+        pageData.bannerImageUrl = '/images/cs.jpg'; // Fallback image
+    }
+
+    // Render the appropriate page
     if (page && page.isVisible()) {
         res.page('homepage');
     } else {
-        res.render('home/homePage');
+        res.render('home/homePage', pageData);
     }
     next();
 }, pageMetaData.computedPageMetaData);
