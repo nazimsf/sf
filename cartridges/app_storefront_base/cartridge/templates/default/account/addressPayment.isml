@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Address Form</title>
+
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="${URLUtils.staticURL('/css/paymentaddress.css')}" />
+</head>
+<body>
+    <form action="${actionUrl}" method="post">
+        <!-- Shipping Information Section -->
+        <fieldset>
+            <legend>${Resource.msg('label.input.addressid', 'forms', 'Address Information')}</legend>
+    
+            <label>${Resource.msg('label.input.firstname.profile', 'forms', 'First Name')} *</label>
+            <input type="text" name="firstName" value="${!empty(shippingForm.firstName.value) ? shippingForm.firstName.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.lastname.profile', 'forms', 'Last Name')} *</label>
+            <input type="text" name="lastName" value="${!empty(shippingForm.lastName.value) ? shippingForm.lastName.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.address1', 'forms', 'Address 1')} *</label>
+            <input type="text" name="address1" value="${!empty(shippingForm.address1.value) ? shippingForm.address1.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.address2', 'forms', 'Address 2')}</label>
+            <input type="text" name="address2" value="${!empty(shippingForm.address2.value) ? shippingForm.address2.value : ''}" />
+    
+            <label>${Resource.msg('label.input.country', 'forms', 'Country')} *</label>
+            <select name="country" required>
+                <option value="US" ${shippingForm.country.value === 'US' ? 'selected' : ''}>${Resource.msg('select.option.country.unitedstates', 'forms', 'United States')}</option>
+                <option value="FR" ${shippingForm.country.value === 'FR' ? 'selected' : ''}>${Resource.msg('select.option.country.france', 'forms', 'France')}</option>
+                <option value="IT" ${shippingForm.country.value === 'IT' ? 'selected' : ''}>${Resource.msg('select.option.country.italy', 'forms', 'Italy')}</option>
+                <option value="JP" ${shippingForm.country.value === 'JP' ? 'selected' : ''}>${Resource.msg('select.option.country.japan', 'forms', 'Japan')}</option>
+                <option value="CN" ${shippingForm.country.value === 'CN' ? 'selected' : ''}>${Resource.msg('select.option.country.china', 'forms', 'China')}</option>
+                <option value="UK" ${shippingForm.country.value === 'UK' ? 'selected' : ''}>${Resource.msg('select.option.country.unitedkingdom', 'forms', 'United Kingdom')}</option>
+            </select>
+    
+            <label>${Resource.msg('label.input.state', 'forms', 'State')} *</label>
+            <select name="state" required>
+                <option value="CA" ${shippingForm.state.value === 'CA' ? 'selected' : ''}>${Resource.msg('state.us.california', 'forms', 'California')}</option>
+                <option value="NY" ${shippingForm.state.value === 'NY' ? 'selected' : ''}>${Resource.msg('state.us.newyork', 'forms', 'New York')}</option>
+                <option value="TX" ${shippingForm.state.value === 'TX' ? 'selected' : ''}>${Resource.msg('state.us.texas', 'forms', 'Texas')}</option>
+                <option value="WA" ${shippingForm.state.value === 'WA' ? 'selected' : ''}>${Resource.msg('state.us.washington', 'forms', 'Washington')}</option>
+            </select>
+    
+            <label>${Resource.msg('label.input.city', 'forms', 'City')} *</label>
+            <input type="text" name="city" value="${!empty(shippingForm.city.value) ? shippingForm.city.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.zipcode', 'forms', 'ZIP Code')} *</label>
+            <input type="text" name="zip" value="${!empty(shippingForm.zip.value) ? shippingForm.zip.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.phonenumber', 'forms', 'Phone Number')} *</label>
+            <input type="text" name="phone" value="${!empty(shippingForm.phone.value) ? shippingForm.phone.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.comments', 'forms', 'Comments')}</label>
+            <textarea id="comments" name="comments" maxlength="150">${!empty(shippingForm.comments.value) ? shippingForm.comments.value : ''}</textarea>
+            <span id="charCount">0/150</span>
+        </fieldset>
+    
+        <hr />
+    
+        <!-- Payment Information Section -->
+        <fieldset>
+            <legend>${Resource.msg('label.input.paymentinfo', 'forms', 'Payment Information')}</legend>
+    
+            <label>${Resource.msg('label.input.creditcard.owner', 'forms', 'Name on Card')} *</label>
+            <input type="text" name="cardOwner" value="${!empty(paymentForm.cardOwner.value) ? paymentForm.cardOwner.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.creditcard.number', 'forms', 'Card Number')} *</label>
+            <input type="text" name="cardNumber" value="${!empty(paymentForm.cardNumber.value) ? paymentForm.cardNumber.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.payment.expirationmonth', 'forms', 'Expiration Month')} *</label>
+            <select name="expirationMonth" required>
+                <option value="01" ${paymentForm.expirationMonth.value === '01' ? 'selected' : ''}>${Resource.msg('select.default.month', 'forms', 'Month')}</option>
+                <option value="02" ${paymentForm.expirationMonth.value === '02' ? 'selected' : ''}>02</option>
+                <option value="03" ${paymentForm.expirationMonth.value === '03' ? 'selected' : ''}>03</option>
+                <option value="04" ${paymentForm.expirationMonth.value === '04' ? 'selected' : ''}>04</option>
+                <option value="05" ${paymentForm.expirationMonth.value === '05' ? 'selected' : ''}>05</option>
+                <option value="06" ${paymentForm.expirationMonth.value === '06' ? 'selected' : ''}>06</option>
+                <option value="07" ${paymentForm.expirationMonth.value === '07' ? 'selected' : ''}>07</option>
+                <option value="08" ${paymentForm.expirationMonth.value === '08' ? 'selected' : ''}>08</option>
+                <option value="09" ${paymentForm.expirationMonth.value === '09' ? 'selected' : ''}>09</option>
+                <option value="10" ${paymentForm.expirationMonth.value === '10' ? 'selected' : ''}>10</option>
+                <option value="11" ${paymentForm.expirationMonth.value === '11' ? 'selected' : ''}>11</option>
+                <option value="12" ${paymentForm.expirationMonth.value === '12' ? 'selected' : ''}>12</option>
+            </select>
+    
+            <label>${Resource.msg('label.input.payment.expirationyear', 'forms', 'Expiration Year')} *</label>
+            <select name="expirationYear" required>
+                <option value="2025" ${paymentForm.expirationYear.value === '2025' ? 'selected' : ''}>2025</option>
+                <option value="2026" ${paymentForm.expirationYear.value === '2026' ? 'selected' : ''}>2026</option>
+                <option value="2027" ${paymentForm.expirationYear.value === '2027' ? 'selected' : ''}>2027</option>
+                <option value="2028" ${paymentForm.expirationYear.value === '2028' ? 'selected' : ''}>2028</option>
+                <option value="2029" ${paymentForm.expirationYear.value === '2029' ? 'selected' : ''}>2029</option>
+            </select>
+    
+            <label>${Resource.msg('label.input.creditcard.securitycode', 'forms', 'Security Code')} *</label>
+            <input type="text" name="securityCode" value="${!empty(paymentForm.securityCode.value) ? paymentForm.securityCode.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.billingaddress', 'forms', 'Billing Address')} *</label>
+            <input type="text" name="billingAddress" value="${!empty(paymentForm.billingAddress.value) ? paymentForm.billingAddress.value : ''}" required />
+    
+            <label>${Resource.msg('label.input.email', 'forms', 'Email')} *</label>
+            <input type="email" name="email" value="${!empty(paymentForm.email.value) ? paymentForm.email.value : ''}" required />
+    
+            <label>
+                <input type="checkbox" name="saveCard" ${paymentForm.saveCard.value ? 'checked' : ''} /> ${Resource.msg('label.save.card', 'forms', 'Save Card to Account')}
+            </label>
+    
+            <!-- Submit Payment Button -->
+            <button type="submit">${Resource.msg('button.submit.payment', 'forms', 'Submit Payment')}</button>
+        </fieldset>
+    </form>
+
+    <script>
+        $('#comments').on('input', function() {
+            var charCount = $(this).val().length;
+            $('#charCount').text(charCount + '/150');
+        });
+    </script>
+</body>
+</html>
