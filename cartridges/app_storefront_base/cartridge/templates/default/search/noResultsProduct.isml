@@ -1,3 +1,4 @@
 <isslot id="noresults-help" description="Recommendations for no result search" context="global" />
 
 <isslot id="noresult-recommendations" description="Recommendations for no result search" context="global" />
+<isslot id="header_banner" description="…" context="global"/>

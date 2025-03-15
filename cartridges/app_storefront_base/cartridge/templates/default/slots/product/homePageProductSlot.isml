@@ -2,13 +2,33 @@
 
 <div class="homepage-product-listing row">
 
-    <isloop items="${slotcontent.content}" var="product" status="loopState">
+    <!-- Check if slotcontent is populated -->
+    <isif condition="${!empty(slotcontent) && !empty(slotcontent.content)}">
+        <!-- Debugging: Display Slot Content -->
+        <p>Slot Content is available!</p>
 
+        <!-- Product Carousel -->
+        <div class="product-carousel">
+            <isslot id="carousel-slot" description="Product Carousel Slot" context="global">
+                <!-- Fallback if no product content is available -->
+                <p>No products available for carousel.</p>
+            </isslot>
+        </div>
+
+    </isif>
+
+    <iselse>
+        <!-- Slotcontent is empty -->
+        <p>No content available for the carousel.</p>
+    </iselse>
+
+    <!-- Other product listings (this part remains intact) -->
+    <isloop items="${slotcontent.content}" var="product" status="loopState">
         <div class="col-6 col-sm-4">
             <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
         </div>
 
-        <isif condition="${loopState.count == 1}" >
+        <isif condition="${loopState.count == 1}">
             <div class="card col-6 col-sm-4 hp-product-content">
                 <div class="card-body">
                     <iscontentasset aid="home-product-tile-content" />
@@ -18,3 +38,36 @@
 
     </isloop>
 </div>
+
+<!-- Include Slick Carousel CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+<!-- Include jQuery and Slick Carousel JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // Initialize the carousel if it contains items
+        if ($('.product-carousel .carousel-item').length > 0) {
+            $('.product-carousel').slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+                arrows: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        } else {
+            console.log("No products to display in the carousel.");
+        }
+    });
+</script>
