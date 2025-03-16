@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-10">
+    <field formid="addressid" type="string" mandatory="true" label="label.input.addressid" />
+    <field formid="firstName" type="string" mandatory="true" label="label.input.firstname.profile" />
+    <field formid="lastName" type="string" mandatory="true" label="label.input.lastname.profile" />
+    <field formid="address1" type="string" mandatory="true" label="label.input.address1" />
+    <field formid="address2" type="string" label="label.input.address2" />
+    <field formid="country" type="string" mandatory="true" label="label.input.country">
+        <options>
+            <option value="US">${Resource.msg('select.option.country.unitedstates', 'forms', null)}</option>
+            <option value="FR">${Resource.msg('select.option.country.france', 'forms', null)}</option>
+            <option value="IT">${Resource.msg('select.option.country.italy', 'forms', null)}</option>
+            <option value="JP">${Resource.msg('select.option.country.japan', 'forms', null)}</option>
+            <option value="CN">${Resource.msg('select.option.country.china', 'forms', null)}</option>
+            <option value="UK">${Resource.msg('select.option.country.unitedkingdom', 'forms', null)}</option>
+        </options>
+    </field>
+    <field formid="state" type="string" mandatory="true" label="label.input.state">
+        <options>
+            <option value="CA">${Resource.msg('state.us.california', 'forms', null)}</option>
+            <option value="NY">${Resource.msg('state.us.newyork', 'forms', null)}</option>
+            <option value="TX">${Resource.msg('state.us.texas', 'forms', null)}</option>
+            <option value="WA">${Resource.msg('state.us.washington', 'forms', null)}</option>
+        </options>
+    </field>
+    <field formid="city" type="string" mandatory="true" label="label.input.city" />
+    <field formid="zip" type="string" mandatory="true" label="label.input.zipcode" regexp="^\d{5}(-\d{4})?$" parse-error="error.message.parse.zip" />
+    <field formid="phone" type="string" mandatory="true" label="label.input.phonenumber" regexp="^\d{10}$" parse-error="error.message.parse.phone" />
+    <field formid="comments" type="string" max-length="150" label="label.input.comments" />
+    <action formid="submit" valid-form="true" />
+</form>
