@@ -8,7 +8,6 @@ var server = require('server');
 var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
-var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
 
 /**
  * Home-Show : This endpoint is called when a shopper navigates to the home page
@@ -25,11 +24,15 @@ server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (r
     var ContentMgr = require('dw/content/ContentMgr');
     var Site = require('dw/system/Site');
     var PageMgr = require('dw/experience/PageMgr');
+    var Logger = require('dw/system/Logger');
+    var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper'); // Moved inside the route
 
     var pageData = {};
 
+    // Set page meta tags
     pageMetaHelper.setPageMetaTags(req.pageMetaData, Site.current);
 
+    // Retrieve the homepage page
     var page = PageMgr.getPage('homepage');
 
     // Retrieve the content asset
@@ -37,6 +40,7 @@ server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (r
     if (contentAsset && contentAsset.custom && contentAsset.custom.imageUrl) {
         pageData.bannerImageUrl = contentAsset.custom.imageUrl;
     } else {
+        Logger.warn('Content asset "homepage-banner" is missing or does not have an "imageUrl" attribute.');
         pageData.bannerImageUrl = '/images/cs.jpg'; // Fallback image
     }
 
@@ -49,6 +53,14 @@ server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (r
     next();
 }, pageMetaData.computedPageMetaData);
 
+/**
+ * Home-ErrorNotFound : This endpoint is called when a requested page is not found
+ * @name Base/Home-ErrorNotFound
+ * @function
+ * @memberof Home
+ * @param {renders} - isml
+ * @param {serverfunction} - get
+ */
 server.get('ErrorNotFound', function (req, res, next) {
     res.setStatusCode(404);
     res.render('error/notFound');
