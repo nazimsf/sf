@@ -1,0 +1,41 @@
+<isdecorate template="common/layout/header">
+    <isreplace value="${pdict.body}" encoding="off">
+        <form id="address-payment-form">
+            <fieldset>
+                <legend>Address Details</legend>
+                <input type="text" name="street" placeholder="Street Address" required />
+                <input type="text" name="city" placeholder="City" required />
+                <input type="text" name="state" placeholder="State" required />
+                <input type="text" name="zip" placeholder="ZIP Code" required />
+            </fieldset>
+            <fieldset>
+                <legend>Payment Details</legend>
+                <input type="text" name="cardNumber" placeholder="Card Number" required />
+                <input type="text" name="expiryDate" placeholder="Expiry Date (MM/YY)" required />
+                <input type="text" name="cvv" placeholder="CVV" required />
+            </fieldset>
+            <fieldset>
+                <legend>Comments</legend>
+                <textarea id="comments" name="comments" placeholder="Comments" maxlength="150"></textarea>
+                <span id="charCount">0/150</span>
+            </fieldset>
+            <button type="submit">Submit</button>
+        </form>
+
+        <button id="scrollTopBtn">Scroll to Top</button>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('#comments').on('input', function() {
+                var charCount = $(this).val().length;
+                $('#charCount').text(charCount + '/150');
+            });
+
+            $('#scrollTopBtn').click(function() {
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+        });
+        </script>
+    </isreplace>
+</isdecorate>

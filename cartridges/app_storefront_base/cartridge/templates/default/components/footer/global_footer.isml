@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/footer-style.css')}" />
+
+<footer class="global-footer">
+    <section class="footer-title">
+      <iscontentasset aid="footer-title" />
+    </section>
+    <section class="footer-benefits">
+      
+      <iscontentasset aid="footer-benefit-1" />
+      <iscontentasset aid="footer-benefit-2" />
+      <iscontentasset aid="footer-benefit-3" />
+      <iscontentasset aid="footer-benefit-4" />
+    </section>
+  
+    <section class="footer-trust">
+      <iscontentasset aid="footer-trust" />
+    </section>
+  
+    <section class="footer-customer-service">
+      <iscontentasset aid="footer-customer-service" />
+    </section>
+  
+    <section class="footer-about">
+      <iscontentasset aid="footer-about2" />
+    </section>
+  
+    <section class="footer-account">
+      <iscontentasset aid="footer-account2" />
+    </section>
+  
+
+    <section class="footer-lorem">
+      <iscontentasset aid="footer-lorem" />
+    </section>
+    <section class="footer-legal">
+      <iscontentasset aid="footer-legal" />
+    </section>
+  </footer>

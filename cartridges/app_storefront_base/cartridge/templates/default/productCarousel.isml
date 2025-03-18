@@ -1,0 +1,57 @@
+<isdecorate template="decorators/carousel">
+
+    <!-- Check if the content has been passed and it's not empty -->
+    <isif condition="${!empty(content)}">
+        <p>Content is available in the carousel!</p>
+        
+        <!-- Product carousel container -->
+        <div class="product-carousel">
+            <isloop items="${content}" var="product">
+                <isif condition="${!empty(product) && !empty(product.ID)}">
+                    <!-- Carousel item for each product -->
+                    <div class="carousel-item">
+                        <p>Product ID: ${product.ID}</p>
+                        <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
+                    </div>
+                </isif>
+                <iselse>
+                    <p>Invalid product data!</p>
+                </iselse>
+            </isloop>
+        </div>
+        
+    </isif>
+    <iselse>
+        <p>No products available in the carousel!</p>
+    </iselse>
+
+    <!-- Include Slick Carousel JS and CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Initialize Slick carousel if content is available
+            if ($('.product-carousel .carousel-item').length > 0) {
+                $('.product-carousel').slick({
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+            }
+        });
+    </script>
+
+</isdecorate>
