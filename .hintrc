@@ -7,9 +7,18 @@
       "default",
       {
         "ignore": [
-          "flex-direction"
+          "flex-direction",
+          "flex",
+          "-webkit-text-size-adjust",
+          "text-align: -webkit-match-parent",
+          "-webkit-overflow-scrolling"
         ]
       }
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not ie <= 10"
+  ]
 }
