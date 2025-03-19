@@ -63,6 +63,56 @@ server.get('Show', cache.applyPromotionSensitiveCache, consentTracking.consent, 
     next();
 }, pageMetaData.computedPageMetaData);
 
+var ProductMgr = require('dw/catalog/ProductMgr');
+
+server.append('Show', function (req, res, next) {
+    var productId = res.getViewData().product.id;
+    var product = ProductMgr.getProduct(productId);
+    var suggestedProducts = [];
+
+    if (product.isCategorized()) {
+        var CatalogMgr = require('dw/catalog/CatalogMgr');
+        var ProductSearchModel = require('dw/catalog/ProductSearchModel');
+        var ProductSearch = require('*/cartridge/models/search/productSearch');
+
+        var apiProductSearch = new ProductSearchModel();
+        apiProductSearch.setCategoryID(product.getPrimaryCategory().ID);
+        apiProductSearch.search();
+
+        var productSearch = new ProductSearch(apiProductSearch,
+            req.querystring,
+            req.querystring.srule,
+            CatalogMgr.getSortingOptions(),
+            CatalogMgr.getSiteCatalog().getRoot());
+
+        for (var index = 0; index < 4; index++) {
+            var suggestedProductId = productSearch.productIds[index].productID;
+            var suggestedProduct = ProductMgr.getProduct(suggestedProductId);
+
+            // Retrieve the image URL for the suggested product
+            var image = suggestedProduct.getImage('small');
+            var imageURL = image ? image.URL : '';
+
+            // Retrieve the price for the suggested product
+            var priceModel = suggestedProduct.getPriceModel();
+            var price = priceModel ? priceModel.getPrice().toFormattedString() : '';
+
+            // Add the image URL and price to the suggested product object
+            suggestedProducts.push({
+                id: suggestedProduct.ID,
+                name: suggestedProduct.name,
+                price: price,
+                imageURL: imageURL
+            });
+        }
+    }
+
+    res.setViewData({
+        suggestedProducts: suggestedProducts
+    });
+
+    next();
+});
 /**
  * Product-ShowInCategory : The Product-ShowInCategory endpoint renders the product detail page within the context of a category
  * @name Base/Product-ShowInCategory

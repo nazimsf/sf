@@ -1,7 +1,24 @@
+<isscript>
+    var URLUtils = require('dw/web/URLUtils');
+    var cssFile = URLUtils.staticURL('css/global.css');
+    var cssFile1 = URLUtils.staticURL('css/badge-style.css');
+  </isscript>
+  <link rel="stylesheet" type="text/css" href="${cssFile}" />
+  <link rel="stylesheet" type="text/css" href="${cssFile1}" />
+  
 <isloop items="${pdict.productSearch.productIds}" var="product">
     <div class="col-6 col-sm-4">
         <isobject object="${product.productSearchHit}" view="searchhit">
-            <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.productID, 'swatches', true, 'ratings', true)}" />
+            <!-- Wrap the product image with a container for positioning the badge -->
+            <div class="product-tile">
+                <!-- Add the Clothing Badge -->
+                <div class="badge22">Clothing Badge</div>
+
+                <!-- Existing image or product content -->
+                <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.productID, 'swatches', true, 'ratings', true)}" />
+            </div>
         </isobject>
     </div>
 </isloop>
+
+
