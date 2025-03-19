@@ -1,0 +1,47 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/inputAndButton.css');
+        assets.addJs('/js/inputAndButton.js');
+    </isscript>
+
+    <script>
+        // Define the fetchDataUrl dynamically within the ISML
+        var fetchDataUrl = '${URLUtils.https("YourController-fetchData")}';
+    </script>
+
+    <div class="center-container">
+        <div class="input-button-group">
+            <!-- Input and Button in the same line -->
+            <input type="text" id="userInput" class="form-control" placeholder="Type here" />
+            <button id="fetchData" class="btn btn-primary">Open!Gyou</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Awesome Filter</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContent">Loading...</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Including JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</isdecorate>
