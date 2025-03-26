@@ -1,0 +1,31 @@
+<div class="custom-banner-container">
+    <isif condition="${pdict.bannerImage}">
+        <a href="${pdict.bannerLink}" class="custom-banner-link">
+            <img src="${pdict.bannerImage}" alt="Banner Image" class="custom-banner-image" />
+            <isif condition="${pdict.bannerLinkText}">
+                <span class="custom-banner-link-text">${pdict.bannerLinkText}</span>
+            </isif>
+        </a>
+    </isif>
+</div>
+
+<style>
+    .custom-banner-container {
+        text-align: center;
+    }
+    .custom-banner-link {
+        display: inline-block;
+        text-decoration: none;
+    }
+    .custom-banner-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .custom-banner-link-text {
+        display: block;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+</style>

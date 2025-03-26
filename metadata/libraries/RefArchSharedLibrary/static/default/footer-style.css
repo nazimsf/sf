@@ -1,0 +1,149 @@
+/* Global Footer Styles */
+
+.global-footer {
+    font-family: sans-serif; /* Or your preferred font */
+    background-color: #ffffff;
+    color: #333; /* Dark gray text */
+  }
+  .footer-title{
+    font-size: 1.5em;
+    text-align: center;
+    background-color: #80b2d8;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  
+  /* Benefits Section */
+  .footer-benefits {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd; /* Light border */
+    background-color: #80b2d8;
+    margin-top: -10px;
+    padding: 15px;
+  }
+  
+  .footer-benefits article {
+    flex: 1;
+    padding: 0 10px;
+    text-align: center;
+  }
+  
+  .footer-benefits h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-benefits p {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+ 
+  /* Trusted Shops, Payment, Shipping */
+  .footer-trust {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #e0d3d3;
+
+  }
+  
+  .footer-trust div {
+    text-align: center;
+  }
+  
+  .footer-trust img {
+    max-height: 70px; /* Adjust as needed */
+    margin: 0 5px;
+  }
+  .trusted-shops img{
+    max-height: 100px; /* Adjust as needed */
+    
+  }
+  
+  /* Customer Service */
+  .footer-customer-service {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    background-color: #80b2d8;
+
+  }
+  
+  .footer-customer-service div {
+    text-align: center;
+  }
+  
+  .footer-customer-service h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-customer-service p {
+    font-size: 0.9em;
+  }
+  
+  /* About & Account */
+  .footer-about, .footer-account {
+    justify-content: space-around;
+    padding: 20px 0;
+    background-color: #80b2d8;
+    padding: 15px;
+  }
+  
+  .footer-about h3, .footer-account h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-about ul, .footer-account ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+  }
+  .footer-about a:link, .footer-account a:link {
+    color: white;
+  }
+
+  
+  .footer-about li, .footer-account li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-about a, .footer-account a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9em;
+  }
+
+  .footer-lorem{
+    background-color: #e0d3d3;
+    padding: 30px;
+    font-size: 14px;  }
+  
+  /* Legal Section */
+  .footer-legal {
+    text-align: center;
+    font-size: 0.8em;
+    color: #000000;
+    background-color: #80b2d8;
+    margin-top: -15px;
+    padding: 20px 0;
+
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .footer-benefits, .footer-trust, .footer-customer-service, .footer-about, .footer-account {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-benefits article, .footer-trust div, .footer-customer-service div, .footer-about ul, .footer-account ul {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }

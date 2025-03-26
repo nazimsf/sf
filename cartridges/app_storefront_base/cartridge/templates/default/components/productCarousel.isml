@@ -1,0 +1,25 @@
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/slick.min.js');
+        assets.addCss('/css/slick.css');
+        assets.addCss('/css/slick-theme.css');
+    </isscript>
+    <div class="product-carousel">
+        <div class="slick-carousel">
+            <isslot id="product-carousel-slot" description="Product carousel slot." context="global" />
+        </div>
+    </div>
+
+    <isscript>
+        $(document).ready(function(){
+            $('.slick-carousel').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: true,
+                dots: true
+            });
+        });
+    </isscript>

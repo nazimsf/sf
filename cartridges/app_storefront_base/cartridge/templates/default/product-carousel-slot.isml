@@ -1,0 +1,22 @@
+<!-- product-carousel-slot Template -->
+<isloop items="${slotcontent.content}" var="product" status="loopState">
+  
+  <!-- Each product inside the carousel -->
+  <div class="carousel-item ${loopState.count == 1 ? 'active' : ''}">
+    <div class="row">
+      <div class="col-6 col-sm-4">
+        <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
+      </div>
+    </div>
+
+    <!-- Product Content Card for the first item -->
+    <isif condition="${loopState.count == 1}">
+      <div class="card col-6 col-sm-4 hp-product-content">
+        <div class="card-body">
+          <iscontentasset aid="home-product-tile-content" />
+        </div>
+      </div>
+    </isif>
+  </div>
+
+</isloop>

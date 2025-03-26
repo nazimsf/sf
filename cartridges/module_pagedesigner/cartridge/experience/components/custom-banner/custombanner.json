@@ -1,0 +1,41 @@
+{
+    "name": "Custom Banner",
+    "description": "A banner with an image and a link to a category.",
+    "group": "custom_components",
+    "attribute_definition_groups": [
+      {
+        "id": "bannerImageSection",
+        "name": "Banner Image",
+        "description": "The image to be displayed on the banner.",
+        "attribute_definitions": [
+          {
+            "id": "bannerImage",
+            "name": "Image",
+            "description": "The image file for the banner.",
+            "type": "image",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "bannerLinkSection",
+        "name": "Banner Link",
+        "description": "The link to be associated with the banner.",
+        "attribute_definitions": [
+          {
+            "id": "bannerLink",
+            "name": "Link URL",
+            "description": "The URL the banner links to.",
+            "type": "url"
+          },
+          {
+            "id": "bannerLinkText",
+            "name": "Link Text",
+            "description": "The text for the link.",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }

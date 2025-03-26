@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://www.demandware.com/xml/impex/user/2007-09-05">
+    <user login="nazim.djeghri@gmail.com" enabled-flag="true">
+        <credentials>
+            <external-id>40cf026c-f183-441b-ba07-6cba826e3b97</external-id>
+        </credentials>
+        <profile>
+            <first-name>Mohamed Nazime</first-name>
+            <last-name>Djeghri</last-name>
+            <email>nazim.djeghri@gmail.com</email>
+        </profile>
+    </user>
+
+</users>

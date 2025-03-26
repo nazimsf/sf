@@ -1,20 +1,96 @@
 <isinclude template="/components/modules" />
 
-<div class="homepage-product-listing row">
+<div class="homepage-product-listing swiper-container">
+    <div class="swiper-wrapper">
 
-    <isloop items="${slotcontent.content}" var="product" status="loopState">
+        <isloop items="${slotcontent.content}" var="product" status="loopState">
 
-        <div class="col-6 col-sm-4">
-            <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
-        </div>
-
-        <isif condition="${loopState.count == 1}" >
-            <div class="card col-6 col-sm-4 hp-product-content">
-                <div class="card-body">
-                    <iscontentasset aid="home-product-tile-content" />
+            <div class="swiper-slide">
+                <div class="col-6 col-sm-4">
+                    <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
                 </div>
             </div>
-        </isif>
 
-    </isloop>
+            <isif condition="${loopState.count == 1}">
+                <div class="swiper-slide">
+                    <div class="card col-6 col-sm-4 hp-product-content">
+                        <div class="card-body">
+                            <iscontentasset aid="home-product-tile-content" />
+                        </div>
+                    </div>
+                </div>
+            </isif>
+
+        </isloop>
+    </div>
+
+    <!-- Pagination and Navigation -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
+
+<!-- Swiper.js CDN -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+    });
+</script>
+
+<!-- Additional Styling for Buttons -->
+<style>
+    .swiper-container {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: relative; /* Ensure buttons are positioned relative to container */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust to vertical center */
+    }
+
+    .swiper-button-next {
+        right: 5px; /* Bring it closer to the slides */
+    }
+
+    .swiper-button-prev {
+        left: 5px; /* Bring it closer to the slides */
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+</style>

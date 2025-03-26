@@ -1,0 +1,15 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/custombanner.css');
+</isscript>
+
+<figure class="component-figure">
+    <a href="${pdict.bannerLink}">
+        <picture>
+            <source srcset="${pdict.bannerImage.src.desktop}" media="(min-width: 768px)"/>
+            <img class="component-image" src="${pdict.bannerImage.src.mobile}" 
+                 style="--focal-point-x:${pdict.bannerImage.focalPointX}; --focal-point-y:${pdict.bannerImage.focalPointY}" 
+                 <isif condition="${pdict.bannerImage.alt}">alt="${pdict.bannerImage.alt}" title="${pdict.bannerImage.alt}"</isif> />
+        </picture>
+    </a>
+</figure>

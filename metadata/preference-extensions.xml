@@ -1,0 +1,5 @@
+<custom-attribute>
+    <id>customBanner</id>
+    <type>String</type>
+    <label xml:lang="x-default">Custom Banner</label>
+</custom-attribute>

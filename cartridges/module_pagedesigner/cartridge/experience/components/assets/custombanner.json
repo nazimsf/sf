@@ -1,0 +1,36 @@
+{
+  "name": "Custom Banner",
+  "description": "A banner with an image that links to a category.",
+  "group": "assets",
+  "attribute_definition_groups": [
+    {
+      "id": "bannerImageSection",
+      "name": "Banner Image",
+      "description": "The image to be displayed on the banner.",
+      "attribute_definitions": [
+        {
+          "id": "bannerImage",
+          "name": "Image",
+          "description": "The image file for the banner.",
+          "type": "image",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "categoryLinkSection",
+      "name": "Shop Now Link",
+      "description": "The link to the category associated with the banner.",
+      "attribute_definitions": [
+        {
+          "id": "categoryUrl",
+          "name": "Category URL",
+          "description": "The URL of the category the banner links to.",
+          "type": "url",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "region_definitions": []
+}

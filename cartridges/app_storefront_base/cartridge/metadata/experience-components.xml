@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <component>
+        <id>customBanner</id>
+        <name>Custom Banner</name>
+        <group>custom_components</group>
+        <template>experience/components/custom-banner/custombanner</template>
+        <definition>experience/components/custom-banner/custombanner</definition>
+    </component>
+</metadata>
